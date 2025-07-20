@@ -22,8 +22,11 @@ services:
       context: ./frontend
     container_name: frontend
     ports:
-      - "3001:3000"
+      - "3000:3000"
     depends_on:
       - processor-service
     networks:
       - iot-net
+networks:
+  iot-net:
+    driver: bridge
