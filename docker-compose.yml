@@ -1,17 +1,29 @@
-version: '3.8'
-
 services:
-  sensor-service:
-    build: ./sensor-service
-    depends_on:
-      - processor-service
-
   processor-service:
-    build: ./processor-service
+    build:
+      context: ./processor-service
+    container_name: processor-service
     ports:
       - "8080:8080"
+    networks:
+      - iot-net
+
+  sensor-service:
+    build:
+      context: ./sensor-service
+    container_name: sensor-service
+    depends_on:
+      - processor-service
+    networks:
+      - iot-net
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+    container_name: frontend
     ports:
       - "3001:3000"
+    depends_on:
+      - processor-service
+    networks:
+      - iot-net

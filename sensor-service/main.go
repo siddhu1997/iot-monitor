@@ -32,10 +32,10 @@ func main() {
 
 func sendJSON(r pb.SensorReading) {
 	body, _ := json.Marshal(r)
-	http.Post("http://localhost:8080/json", "application/json", bytes.NewBuffer(body))
+	http.Post("http://processor-service:8080/json", "application/json", bytes.NewBuffer(body))
 }
 
 func sendProtobuf(r pb.SensorReading) {
 	body, _ := proto.Marshal(&r)
-	http.Post("http://localhost:8080/protobuf", "application/x-protobuf", bytes.NewBuffer(body))
+	http.Post("http://processor-service:8080/protobuf", "application/x-protobuf", bytes.NewBuffer(body))
 }

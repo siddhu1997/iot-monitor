@@ -1,9 +1,15 @@
-FROM node:20
+# Use official Node.js image
+FROM node:20-alpine
 
 WORKDIR /app
-COPY . .
+
+COPY package*.json ./
 RUN npm install
+
+COPY . .
+
 RUN npm run build
 
 EXPOSE 3000
+
 CMD ["npm", "start"]
