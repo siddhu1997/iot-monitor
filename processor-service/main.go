@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	pb "github.com/siddhu1997/iot-monitor/processor-service/proto;sensor"
+	pb "processor-service/proto"
 
 	"google.golang.org/protobuf/proto"
 )

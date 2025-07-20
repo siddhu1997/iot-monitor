@@ -1,4 +1,4 @@
-module github.com/siddhu1997/iot-monitor/sensor-service
+module sensor-service
 
 go 1.24.5
 

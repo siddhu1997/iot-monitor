@@ -98,7 +98,7 @@ const file_sensor_proto_rawDesc = "" +
 	"\tdevice_id\x18\x01 \x01(\tR\bdeviceId\x12 \n" +
 	"\vtemperature\x18\x02 \x01(\x02R\vtemperature\x12\x1a\n" +
 	"\bhumidity\x18\x03 \x01(\x02R\bhumidity\x12\x1c\n" +
-	"\ttimestamp\x18\x04 \x01(\x03R\ttimestampB?Z=github.com/siddhu1997/iot-monitor/sensor-service/proto;sensorb\x06proto3"
+	"\ttimestamp\x18\x04 \x01(\x03R\ttimestampB Z\x1eprocessor-service/proto;sensorb\x06proto3"
 
 var (
 	file_sensor_proto_rawDescOnce sync.Once

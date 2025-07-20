@@ -3,16 +3,18 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"math/rand"
 	"net/http"
 	"time"
 
-	pb "github.com/siddhu1997/iot-monitor/sensor-service/proto"
+	pb "sensor-service/proto"
 
 	"google.golang.org/protobuf/proto"
 )
 
 func main() {
+	fmt.Println("Sensor service running...")
 	for {
 		reading := pb.SensorReading{
 			DeviceId:    "device-001",
@@ -23,17 +25,17 @@ func main() {
 
 		sendJSON(reading)
 		sendProtobuf(reading)
-
 		time.Sleep(5 * time.Second)
+		fmt.Printf("Sent reading: %v at %s\n", reading.DeviceId, time.Unix(reading.Timestamp, 0))
 	}
 }
 
-func sendJSON(reading pb.SensorReading) {
-	body, _ := json.Marshal(reading)
-	http.Post("http://processor-service:8080/json", "application/json", bytes.NewBuffer(body))
+func sendJSON(r pb.SensorReading) {
+	body, _ := json.Marshal(r)
+	http.Post("http://localhost:8080/json", "application/json", bytes.NewBuffer(body))
 }
 
-func sendProtobuf(reading pb.SensorReading) {
-	body, _ := proto.Marshal(&reading)
-	http.Post("http://processor-service:8080/protobuf", "application/x-protobuf", bytes.NewBuffer(body))
+func sendProtobuf(r pb.SensorReading) {
+	body, _ := proto.Marshal(&r)
+	http.Post("http://localhost:8080/protobuf", "application/x-protobuf", bytes.NewBuffer(body))
 }

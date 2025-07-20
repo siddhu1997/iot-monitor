@@ -1,4 +1,4 @@
-module github.com/siddhu1997/iot-monitor/processor-service
+module processor-service
 
 go 1.24.5
 
