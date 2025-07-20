@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package sensor;
+
+option go_package = "github.com/siddhu1997/iot-monitor/sensor-service/proto;sensor";
+
+message SensorReading {
+  string device_id = 1;
+  float temperature = 2;
+  float humidity = 3;
+  int64 timestamp = 4;
+}

@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  sensor-service:
+    build: ./sensor-service
+    depends_on:
+      - processor-service
+
+  processor-service:
+    build: ./processor-service
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3001:3000"
